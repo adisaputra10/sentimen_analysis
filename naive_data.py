@@ -25,8 +25,8 @@ print ("\n")
 
 #persiapan data testing dan training
 print ("Preparing data ...")
-train_df_raw = pd.read_csv('dataset_final/training91.csv',sep=';',names=['tweets','label'],header=None)
-test_df_raw = pd.read_csv('dataset_final/testing1.csv',sep=';',names=['tweets','label'],header=None)
+train_df_raw = pd.read_csv('dataset_final/training.csv',sep=';',names=['tweets','label'],header=None)
+test_df_raw = pd.read_csv('dataset_final/testing.csv',sep=';',names=['tweets','label'],header=None)
 train_df_raw = train_df_raw[train_df_raw['tweets'].notnull()]
 test_df_raw = test_df_raw[test_df_raw['tweets'].notnull()]
 
@@ -115,9 +115,9 @@ recall_score=cross_val_score(clf, X_train,y_train, cv=skf, scoring ='recall')
 
 #scoring                                                                                                                                                                                                                                             b                                                                                                                                                                                                                  
 print ("Result ...")
-print ("Recall :%0.2f"%recall_score.mean())
-print ("Precision :%0.2f"%precision_score.mean())
-print ("Accuracy :%0.2f"%scores.mean())
+print ("Recall naive bayes :%0.2f"%recall_score.mean())
+print ("Precision naive bayes  :%0.2f"%precision_score.mean())
+print ("Accuracy naive bayes  :%0.2f"%scores.mean())
 
 #prosentase grafik
 weighted_prediction=clf.predict(X_test)

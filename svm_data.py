@@ -12,6 +12,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn import svm 
 from sklearn.model_selection import cross_val_score, StratifiedKFold
 from sklearn import metrics
+from sklearn.naive_bayes import MultinomialNB
 
 
 #ambil kamus stopword dalam class preprocessing
@@ -111,9 +112,9 @@ recall_score=cross_val_score(clf, X_train,y_train, cv=skf, scoring ='recall')
 
 #scoring                                                                                                                                                                                                                                             b                                                                                                                                                                                                                  
 print ("Result ...")
-print ("Recall :%0.2f"%recall_score.mean())
-print ("Precision :%0.2f"%precision_score.mean())
-print ("Accuracy :%0.2f"%scores.mean())
+print ("Recall  svm :%0.2f"%recall_score.mean())
+print ("Precision svm :%0.2f"%precision_score.mean())
+print ("Accuracy  svm :%0.2f"%scores.mean())
 
 #prosentase grafik
 weighted_prediction=clf.predict(X_test)
