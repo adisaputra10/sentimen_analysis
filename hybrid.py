@@ -30,6 +30,7 @@ print ("\n")
 #persiapan data testing dan training
 print ("Preparing data ...")
 train_df_raw = pd.read_csv('dataset_final/training.csv',sep=';',names=['tweets','label'],header=None)
+
 test_df_raw = pd.read_csv('dataset_final/testing.csv',sep=';',names=['tweets','label'],header=None)
 train_df_raw = train_df_raw[train_df_raw['tweets'].notnull()]
 test_df_raw = test_df_raw[test_df_raw['tweets'].notnull()]
@@ -98,6 +99,7 @@ print ("classfication ...")
 
 
 clf=svm.SVC(kernel='linear',gamma=1)
+
 clf1 = MultinomialNB(alpha=0.1, fit_prior=True, class_prior=None)
 
 
@@ -115,10 +117,10 @@ print ("Complate")
 print ("\n")
 #train model 
 skf=StratifiedKFold(n_splits=5,random_state=0)
-scores=cross_val_score(clf,X_train,y_train,cv=skf)
+scores=cross_val_score(clf1,X_train,y_train,cv=skf)
 scores1=cross_val_score(clf1,X_train,y_train,cv=skf)
-precision_score=cross_val_score(clf,X_train,y_train,cv=skf,scoring='precision')
-recall_score=cross_val_score(clf, X_train,y_train, cv=skf, scoring ='recall')
+precision_score=cross_val_score(clf1,X_train,y_train,cv=skf,scoring='precision')
+recall_score=cross_val_score(clf1, X_train,y_train, cv=skf, scoring ='recall')
 
 #scoring                                                                                                                                                                                                                                             b                                                                                                                                                                                                                  
 print ("Result ...")
@@ -129,6 +131,7 @@ print ("Accuracy Hybrid :%0.2f"%scores1.mean())
 
 #prosentase grafik
 weighted_prediction=clf.predict(X_test)
+print (X_test)
 #print len(weighted_prediction)
 
 """
