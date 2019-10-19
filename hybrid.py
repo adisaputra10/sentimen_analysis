@@ -147,6 +147,7 @@ width=0.9
 labels, values = zip(*Counter(weighted_prediction).items())
 SentimenPositif=values[1]
 SentimenNegatif=values[0]
+SentimenNetral=values[2]
 print(SentimenPositif)
 print(SentimenNegatif)
 
